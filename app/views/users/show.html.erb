@@ -1,0 +1,15 @@
+<h2>User info</h2>
+
+<div>
+  <h4><%= @user.name %></h4>
+</div>
+
+<% @books.each do |books| %>
+<div>
+  <%= link_to book_path(book.id) do %>
+   <% end %>
+
+ <p>タイトル:<%= book.name %></p>
+ <p>感想:<%= book.thoughts %></p>
+</div>
+<% end %>
