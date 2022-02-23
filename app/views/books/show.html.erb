@@ -1,2 +1,12 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<h2>Book detail</h2>
+<div>
+  <%#= image_tag "sample-author1.jpg" %>
+  <%= image_tag @book.user.get_profile_image(50,50) %>
+  <%= @book.user.name %>
+  <%= @book.title %>
+  <%= @book.body %>
+  <% if @book.user == current_user %>
+   <%= link_to "削除", book_path(@book),method: :delete %>
+   <%= link_to "編集", edit_book_path %>
+  <% end %>
+</div>
