@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get "/top" => "homes#top"
   root to: "homes#top"
-  get "/homes/about"=>"homes#about",as:"about"
+  get "/home/about"=>"homes#about",as:"about"
 
   devise_for :users
 

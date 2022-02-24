@@ -1,0 +1,29 @@
+<h2>Books</h2>
+<% books.each do |book| %>
+<div>
+ <%= link_to book.title ,book_path(book.id) %>
+ <%= image_tag book.user.get_profile_image(50,50) %>
+ <p><h4>Title</h4>:<%= book.title %></p>
+ <p><h4>Opinion</h4>:<%= book.body %></p>
+</div>
+<% end %>
+
+<h2>User info</h2>
+
+<div>
+  <%= image_tag user.get_profile_image(50,50) %>
+  <h4>name <%= user.name %></h4>
+  <h4>introduction <%= user.introduction %></h4>
+  <p><%= link_to "プロフィール編集", edit_user_path %></p>
+
+</div>
+
+<% books.each do |book| %>
+<div>
+  <%= link_to book_path(book.id) do %>
+   <% end %>
+
+ <p>タイトル:<%= book.title %></p>
+ <p>感想:<%= book.body %></p>
+</div>
+<% end %>

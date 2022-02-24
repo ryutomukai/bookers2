@@ -22,16 +22,42 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
-          <li><%= link_to top_path  , class: "nav-link text-light" do %>
+          <li><%= link_to root_path  , class: "nav-link text-light" do %>
           <i class="fas fa-home"></i>Homes
-          <% end %>
           </li>
-          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          <% end %>
+          <li><%= link_to edit_user_path(current_user.id)  , class: "nav-link text-light" do %>
+          <i class="fas fa-users" ></i>Users
+          </li>
+          <% end %>
+          <li><%= link_to books_path  , class: "nav-link text-light" do %>
+          <i class="fas fa-book-open" ></i>Books
+          </li>
+          <% end %>
+          <li><%= link_to destroy_user_session_path  , class: "nav-link text-light" do %>
+          <i class="fas fa-sign-out-alt" ></i>Log out
+          </li>
+          <% end %>
+      </div>
             <% else %>
-            <li>
-              <%= link_to "新規登録", new_user_registration_path %>
-              </li>
-              <li><%= link_to "ログイン", new_user_session_path %></li>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            　 <li><%= link_to root_path  , class: "nav-link text-light" do %>
+               <i class="fas fa-home"></i>Homes
+               </li>
+               <% end %>
+               <li><%= link_to about_path  , class: "nav-link text-light" do %>
+               <i class="fas fa-link"></i>About
+               </li>
+               <% end %>
+               <li><%= link_to new_user_registration_path  , class: "nav-link text-light" do %>
+               <i class="fas fa-user-plus"></i>Sign up
+               </li>
+               <% end %>
+               <li><%= link_to new_user_session_path  , class: "nav-link text-light" do %>
+               <i class="fas fa-sign-in-alt"></i>Log in
+               </li>
+            <% end %>
+            </div>
           <% end %>
         </ul>
       </div>
