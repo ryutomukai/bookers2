@@ -1,12 +1,33 @@
-<h2>Book detail</h2>
-<div>
-  <%#= image_tag "sample-author1.jpg" %>
-  <%= image_tag @book.user.get_profile_image(50,50) %>
-  <%= @book.user.name %>
-  <%= @book.title %>
-  <%= @book.body %>
-  <% if @book.user == current_user %>
-   <%= link_to "削除", book_path(@book),method: :delete %>
-   <%= link_to "編集", edit_book_path %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "users/list" , user: @user %>
+      <%= render "list" , book: @book_new %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%#= image_tag "sample-author1.jpg" %>
+              <%= link_to user_path(@book) do %>
+              <%= image_tag @book.user.get_profile_image(50,50) %>
+              <% end %><br>
+              <%= link_to @book.user.name , user_path(@user) %>
+              <td><%= link_to @book.title %></td>
+              <td><%= @book.body %></td>
+              <td>
+                <% if @book.user == current_user %>
+                <%= link_to "Edit" , edit_book_path(@book.id) , class:"btn-sm btn-success" %>
+              </td>
+              <td>
+                <%= link_to "Destroy" , book_path(@book.id) , method: :delete , "data-confirm" => "本当に削除しますか?" , class: "btn-sm btn-danger" %>
+                <% end %>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

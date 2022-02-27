@@ -1,0 +1,24 @@
+<h2>User info</h2>
+
+<table class="table">
+        <tr>
+            <%= image_tag user.get_profile_image(50,50) %>
+        </tr>
+        <tr>
+            <th>name
+                <th><%= user.name %></th>
+            </th>
+        </tr>
+        <tr>
+            <th>introduction
+                <th><%= user.introduction %></th>
+            </th>
+        </tr>
+</table>
+
+   <%= link_to edit_user_path(user) , class: "btn btn-outline-secondary btn-block" do  %>
+   <i class = "fas fa-user-cog"></i>
+
+  <% end %>
+
+

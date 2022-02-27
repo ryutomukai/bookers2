@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -22,41 +21,42 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
-          <li><%= link_to root_path  , class: "nav-link text-light" do %>
+          <li>
+          <%= link_to user_path(current_user.id)  , class: "nav-link text-light" do %>
           <i class="fas fa-home"></i>Homes
-          </li>
           <% end %>
-          <li><%= link_to edit_user_path(current_user.id)  , class: "nav-link text-light" do %>
+          </li>
+          <li><%= link_to users_path , class: "nav-link text-light" do %>
           <i class="fas fa-users" ></i>Users
-          </li>
           <% end %>
+          </li>
           <li><%= link_to books_path  , class: "nav-link text-light" do %>
           <i class="fas fa-book-open" ></i>Books
-          </li>
           <% end %>
+          </li>
           <li><%= link_to destroy_user_session_path  , class: "nav-link text-light" do %>
           <i class="fas fa-sign-out-alt" ></i>Log out
-          </li>
           <% end %>
+          </li>
       </div>
             <% else %>
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
             　 <li><%= link_to root_path  , class: "nav-link text-light" do %>
                <i class="fas fa-home"></i>Homes
-               </li>
                <% end %>
+               </li>
                <li><%= link_to about_path  , class: "nav-link text-light" do %>
                <i class="fas fa-link"></i>About
-               </li>
                <% end %>
+               </li>
                <li><%= link_to new_user_registration_path  , class: "nav-link text-light" do %>
                <i class="fas fa-user-plus"></i>Sign up
-               </li>
                <% end %>
+               </li>
                <li><%= link_to new_user_session_path  , class: "nav-link text-light" do %>
                <i class="fas fa-sign-in-alt"></i>Log in
-               </li>
             <% end %>
+            </li>
             </div>
           <% end %>
         </ul>
@@ -64,18 +64,19 @@
     </div>
   </nav>
     </header>
+    <%= flash[:notice] %>
      <main class="mb-auto">
     <%= yield %>
     </main>
 
     <footer>
-      <div class="container mt-5">
-        <div class="row">
-          <div class="mx-auto">
-            <p>CopyRight Infratop.inc</p>
-          </div>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="mx-auto">
+                    <p>CopyRight Infratop.inc</p>
+                </div>
+            </div>
         </div>
-      </div>
     </footer>
   </body>
 </html>
